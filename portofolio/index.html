@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wahyu Saputra | Portofolio Pribadi</title>
+  <meta name="description" content="Portofolio pribadi Wahyu Saputra - Siswa SMK N Tembarak dengan passion di teknologi, kehidupan, dan hobi memancing.">
+  
+  <!-- Google Fonts: Inter Tight -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Decorative Ambient Glows -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- Main Container -->
+  <div class="page-container">
+
+    <!-- Header Navigation -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#hero" class="brand-logo" id="brand-logo">
+          <span class="logo-badge">WS</span>
+          <span class="logo-name">Wahyu Saputra</span>
+        </a>
+
+        <div class="header-status">
+          <span class="status-indicator"></span>
+          <span class="status-text">SMK N Tembarak</span>
+        </div>
+
+        <nav class="header-nav">
+          <a href="#about" class="nav-link">Tentang</a>
+          <a href="#hobby" class="nav-link">Hobi</a>
+          <a href="#quote" class="nav-link">Quotes</a>
+          <a href="#contact" class="nav-btn-action">Terhubung</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <div class="pill-badge hero-badge">
+            <span class="badge-dot"></span>
+            <span>Halo semuanya! Selamat datang 👋</span>
+          </div>
+
+          <h1 class="hero-title">
+            Saya <span class="highlight-text">Wahyu Saputra</span>, pembelajar dari SMK N Tembarak.
+          </h1>
+
+          <p class="hero-description">
+            Menjelajahi dunia teknologi dengan rasa ingin tahu tinggi, ditemani ketenangan dan kesabaran yang terasah dari hobi memancing di alam terbuka.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary" id="hero-cta-contact">
+              <span>Jalin Kontak</span>
+              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <a href="#hobby" class="btn btn-secondary" id="hero-cta-hobby">
+              <span>Lihat Hobi & Filosofi</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card-preview">
+          <div class="profile-card">
+            <div class="avatar-container">
+              <div class="avatar-ring">
+                <div class="avatar-inner">
+                  <!-- Minimalist modern avatar SVG -->
+                  <svg viewBox="0 0 120 120" class="avatar-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="60" cy="60" r="60" fill="#f4f4f4"/>
+                    <circle cx="60" cy="46" r="22" fill="#222222"/>
+                    <path d="M22 104C22 84.1178 38.1178 68 58 68H62C81.8822 68 98 84.1178 98 104V110C98 111.105 97.1046 112 96 112H24C22.8954 112 22 111.105 22 110V104Z" fill="#222222"/>
+                    <!-- Fishing Hat Accent in #fabc0f -->
+                    <path d="M36 40C36 34 46 30 60 30C74 30 84 34 84 40C84 42 78 43 60 43C42 43 36 42 36 40Z" fill="#fabc0f"/>
+                    <path d="M30 42C30 40 42 38 60 38C78 38 90 40 90 42C90 44 78 46 60 46C42 46 30 44 30 42Z" fill="#fabc0f" fill-opacity="0.6"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="online-tag">
+                <span class="online-dot"></span> Aktif
+              </div>
+            </div>
+
+            <div class="profile-meta">
+              <span class="meta-label">IDENTITAS</span>
+              <h2 class="meta-name">Wahyu Saputra</h2>
+              <p class="meta-school">SMK N Tembarak</p>
+            </div>
+
+            <div class="profile-tags">
+              <span class="mini-tag">Pelajar</span>
+              <span class="mini-tag">Teknologi</span>
+              <span class="mini-tag highlight">Angler 🎣</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bento Grid Section: About, Hobby, Quote, and Socials -->
+      <section class="bento-section" id="about">
+        <div class="section-intro">
+          <div class="pill-badge">
+            <span class="badge-dot"></span>
+            <span>Eksplorasi Pribadi</span>
+          </div>
+          <h2 class="section-heading">Karakter, Hobi & Dedikasi</h2>
+          <p class="section-subheading">Kombinasi antara semangat belajar dan seni melatih ketenangan pikiran.</p>
+        </div>
+
+        <div class="bento-grid">
+
+          <!-- Card 1: Hobi Mancing (Featured Card) -->
+          <article class="bento-card bento-hobby" id="hobby">
+            <div class="bento-content">
+              <div class="card-header">
+                <span class="card-category">HOBI UTAMA</span>
+                <span class="hobby-emoji-pill">🎣 Mancing Mania</span>
+              </div>
+
+              <h3 class="card-title">Ketenangan di Balik Joran & Umpan</h3>
+              <p class="card-text">
+                Bagi saya, memancing bukan sekadar duduk menunggu umpan dimakan ikan. Ini adalah seni meditasi aktif—belajar membaca aliran air, memahami perilaku alam, dan menghargai setiap detik penantian dengan ketenangan jiwa.
+              </p>
+
+              <!-- Fishing Insights / Key Points -->
+              <div class="hobby-insights">
+                <div class="insight-item">
+                  <div class="insight-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong class="insight-title">Fokus & Presisi</strong>
+                    <span class="insight-desc">Melatih konsentrasi penuh pada setiap riak air</span>
+                  </div>
+                </div>
+
+                <div class="insight-item">
+                  <div class="insight-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong class="insight-title">Seni Menunggu</strong>
+                    <span class="insight-desc">Hasil terbaik diraih lewat kesabaran tinggi</span>
+                  </div>
+                </div>
+
+                <div class="insight-item">
+                  <div class="insight-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <strong class="insight-title">Kedekatan Alam</strong>
+                    <span class="insight-desc">Menyegarkan pikiran di spot air tawar lokal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hobby-visual">
+              <div class="fishing-badge-container">
+                <div class="water-ripple"></div>
+                <div class="water-ripple ripple-delay"></div>
+                <div class="fishing-illustration">
+                  <!-- Fishing hook and fish custom SVG -->
+                  <svg viewBox="0 0 160 160" class="fish-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M80 20 V85 C80 105 100 105 100 90" stroke="#222222" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4"/>
+                    <!-- Fishing Hook in #fabc0f -->
+                    <path d="M100 85 C100 110 70 115 70 95 C70 85 75 80 80 80" stroke="#fabc0f" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Fish -->
+                    <g class="animated-fish">
+                      <path d="M45 100 C65 85 95 85 115 100 C95 115 65 115 45 100 Z" fill="#222222"/>
+                      <polygon points="110,100 135,88 130,100 135,112" fill="#fabc0f"/>
+                      <circle cx="62" cy="98" r="3" fill="#ffffff"/>
+                      <circle cx="63" cy="98" r="1.5" fill="#222222"/>
+                      <path d="M78 96 C84 94 90 94 96 96" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Quotes Pilihan -->
+          <article class="bento-card bento-quote" id="quote">
+            <div class="quote-watermark" aria-hidden="true">“</div>
+            <div class="card-header">
+              <span class="card-category">MUTIARA KATA</span>
+              <span class="quote-pill">Filosofi Hidup</span>
+            </div>
+
+            <blockquote class="main-quote">
+              “Kesabaran saat memancing mengajarkan bahwa hal-hal terbaik dalam hidup membutuhkan proses dan ketenangan.”
+            </blockquote>
+
+            <div class="quote-author">
+              <div class="author-avatar">WS</div>
+              <div class="author-info">
+                <span class="author-name">Wahyu Saputra</span>
+                <span class="author-title">SMK N Tembarak</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Sekolah & Asal -->
+          <article class="bento-card bento-school">
+            <div class="card-header">
+              <span class="card-category">ASAL SEKOLAH</span>
+              <span class="pill-badge-small">Akademik</span>
+            </div>
+
+            <div class="school-body">
+              <div class="school-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="school-icon">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </div>
+
+              <div>
+                <h3 class="school-name">SMK N Tembarak</h3>
+                <p class="school-desc">
+                  Tempat menimba ilmu kejuruan, membentuk keterampilan praktis, kedisiplinan, dan integritas untuk masa depan.
+                </p>
+              </div>
+            </div>
+
+            <div class="school-features">
+              <span class="feature-chip">🏫 Lingkungan Produktif</span>
+              <span class="feature-chip">💡 Semangat Berkarya</span>
+              <span class="feature-chip">🤝 Kebersamaan</span>
+            </div>
+          </article>
+
+          <!-- Card 4: Media Sosial & Kontak -->
+          <article class="bento-card bento-social" id="contact">
+            <div class="card-header">
+              <span class="card-category">HUBUNGI SAYA</span>
+              <span class="social-pill">Mari Berkawan</span>
+            </div>
+
+            <h3 class="card-title">Terhubung di Media Sosial</h3>
+            <p class="card-text">
+              Tertarik ngobrol seputar sekolah, teknologi, atau sekadar berbagi spot mancing favorit? Kunjungi akun media sosial saya berikut:
+            </p>
+
+            <div class="social-actions-grid">
+              <!-- TikTok Card Link -->
+              <a href="https://www.tiktok.com/@putla97" target="_blank" rel="noopener noreferrer" class="social-link-card tiktok-card" id="btn-tiktok">
+                <div class="social-icon-box tiktok-icon-bg">
+                  <!-- TikTok SVG -->
+                  <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 00-.88-.06A6.34 6.34 0 003.15 15.7a6.34 6.34 0 0010.82 4.47c1.7-1.7 2.47-3.8 2.47-6.52V8.29c1.37.98 3.03 1.55 4.8 1.6v-3.2z"/>
+                  </svg>
+                </div>
+                <div class="social-meta">
+                  <span class="social-platform">TikTok</span>
+                  <strong class="social-handle">@putla97</strong>
+                </div>
+                <div class="social-arrow">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </a>
+
+              <!-- Instagram Card Link -->
+              <a href="https://www.instagram.com/@putllla" target="_blank" rel="noopener noreferrer" class="social-link-card instagram-card" id="btn-instagram">
+                <div class="social-icon-box instagram-icon-bg">
+                  <!-- Instagram SVG -->
+                  <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </div>
+                <div class="social-meta">
+                  <span class="social-platform">Instagram</span>
+                  <strong class="social-handle">@putllla</strong>
+                </div>
+                <div class="social-arrow">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo">Wahyu Saputra</span>
+          <p class="footer-text">Portofolio pribadi dibuat dengan standar web murni & prinsip kesabaran.</p>
+        </div>
+        <div class="footer-right">
+          <p class="footer-copy">&copy; <span id="year">2026</span> Wahyu Saputra &bull; SMK N Tembarak</p>
+          <a href="#hero" class="back-to-top" id="btn-back-top" title="Kembali ke atas">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

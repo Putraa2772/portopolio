@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Wahyu Saputra - Siswa SMK Jurusan PPLG (Pengembangan Perangkat Lunak dan Gim), berfokus pada web development, logika pemrograman, dan basis data.">
+  <meta name="author" content="Wahyu Saputra">
+  <title>Portfolio Wahyu Saputra | Siswa SMK PPLG</title>
+
+  <!-- Google Fonts: Inter Tight -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- ========================================================================= -->
+  <!-- INTERNAL CSS: DESIGN SYSTEM & STYLING LENGKAP                              -->
+  <!-- ========================================================================= -->
+  <style>
+    /* -----------------------------------------------------------------------
+       1. DESIGN TOKENS & CSS CUSTOM PROPERTIES (:root)
+       ----------------------------------------------------------------------- */
+    :root {
+      /* Palette Warna Sesuai Spesifikasi Wajib */
+      --bg-primary: #f8f8f8;           /* Latar belakang utama canvas page */
+      --bg-secondary: #ffffff;         /* Latar belakang kartu/card & navbar */
+      --text-primary: #222222;         /* Primary Text (Dilarang #000000) */
+      --text-secondary: #666666;       /* Warna teks pendukung / deskripsi */
+      --accent-primary: #fabc0f;       /* Aksen utama CTA, sorotan link, border aktif */
+      --accent-secondary: #f57327;     /* Aksen sekunder untuk hover state */
+      --border-color: #ededed;         /* Pembatas / outline */
+
+      /* Palette Tambahan Terkait */
+      --accent-soft: rgba(250, 188, 15, 0.15);
+      --accent-secondary-soft: rgba(245, 115, 39, 0.12);
+      --success-color: #16a34a;
+      --success-soft: rgba(22, 163, 74, 0.12);
+      --error-color: #dc2626;
+      --error-soft: rgba(220, 38, 38, 0.1);
+
+      /* Tipografi */
+      --font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --weight-light: 300;
+      --weight-body: 400;
+      --weight-medium: 500;
+      --weight-heading: 600;
+
+      /* Skala Teks Restrained (Sesuai Aturan Ketat):
+         H1 (32px–40px), H2 (24px), Body (14px–15px) */
+      --fs-h1: clamp(32px, 3.8vw, 40px);
+      --fs-h2: 24px;
+      --fs-h3: 18px;
+      --fs-h4: 16px;
+      --fs-body: 15px;
+      --fs-small: 13px;
+
+      /* Layout, Spacing (Kelipatan 16px: 8px, 16px, 24px, 32px, 48px, 64px) */
+      --space-8: 8px;
+      --space-16: 16px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --space-48: 48px;
+      --space-64: 64px;
+
+      /* Border Radius Sesuai Spesifikasi */
+      --radius-btn: 8px;
+      --radius-input: 8px;
+      --radius-card: 16px;
+      --radius-pill: 9999px;
+
+      /* Shadow Elevasi Sesuai Aturan */
+      --shadow-elevation: rgba(0, 0, 0, 0.2) 0px 0px 6px 0px;
+      --shadow-hover: rgba(0, 0, 0, 0.2) 0px 4px 14px 0px;
+
+      /* Dimensi & Transisi */
+      --max-width: 1120px;
+      --header-height: 72px;
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* -----------------------------------------------------------------------
+       2. RESET & GLOBAL ELEMENT RULES
+       ----------------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 16px);
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-weight: var(--weight-body);
+      font-size: var(--fs-body);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-primary);
+      font-weight: var(--weight-heading);
+      line-height: 1.3;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: var(--fs-body);
+      font-weight: var(--weight-body);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-secondary);
+      outline-offset: 3px;
+    }
+
+    /* -----------------------------------------------------------------------
+       3. UTILITY & CONTAINER CLASSES
+       ----------------------------------------------------------------------- */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--space-24);
+      padding-right: var(--space-24);
+    }
+
+    .section {
+      padding-top: var(--space-64);
+      padding-bottom: var(--space-64);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto var(--space-48) auto;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: var(--fs-small);
+      font-weight: var(--weight-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-secondary);
+      background-color: var(--accent-secondary-soft);
+      padding: 4px var(--space-16);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-16);
+    }
+
+    .section-title {
+      font-size: var(--fs-h2);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-16);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+    }
+
+    /* -----------------------------------------------------------------------
+       4. BUTTONS & UI CONTROLS
+       ----------------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      font-family: var(--font-family);
+      font-size: var(--fs-body);
+      font-weight: var(--weight-heading);
+      padding: 12px var(--space-24);
+      border-radius: var(--radius-btn);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    /* CTA Utama Berlatar #fabc0f & Hover State #f57327 */
+    .btn-primary {
+      background-color: var(--accent-primary);
+      color: var(--text-primary);
+      border-color: #f0b209;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-secondary);
+      color: #ffffff;
+      border-color: var(--accent-secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: #fafafa;
+      color: var(--accent-secondary);
+      border-color: #dcdcdc;
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 8px var(--space-16);
+      font-size: var(--fs-small);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* -----------------------------------------------------------------------
+       5. HEADER & NAVBAR SEMANTIK
+       ----------------------------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--header-height);
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      transition: box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .header-container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      font-size: 1.05rem;
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      border-radius: var(--radius-btn);
+    }
+
+    .logo-text {
+      letter-spacing: -0.01em;
+    }
+
+    .logo-accent {
+      color: var(--accent-secondary);
+    }
+
+    /* Primary Navigation */
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-32);
+    }
+
+    .nav-list {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .nav-link {
+      font-size: var(--fs-body);
+      font-weight: var(--weight-medium);
+      color: var(--text-secondary);
+      padding: 8px var(--space-16);
+      border-radius: var(--radius-btn);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-link.active {
+      color: var(--text-primary);
+      font-weight: var(--weight-heading);
+      background-color: var(--accent-soft);
+      border-bottom: 2px solid var(--accent-primary);
+    }
+
+    /* Hamburger Menu Button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      z-index: 1100;
+      transition: var(--transition);
+    }
+
+    .hamburger-bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle[aria-expanded="true"] .hamburger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* -----------------------------------------------------------------------
+       6. HERO SECTION
+       ----------------------------------------------------------------------- */
+    .section-hero {
+      padding-top: var(--space-64);
+      padding-bottom: var(--space-64);
+      background: radial-gradient(circle at 10% 20%, rgba(250, 188, 15, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(245, 115, 39, 0.06) 0%, transparent 45%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: var(--space-48);
+    }
+
+    .hero-badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      font-size: var(--fs-small);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 6px var(--space-16);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-24);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #22c55e;
+      position: relative;
+    }
+
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(34, 197, 94, 0.4);
+      animation: pulse-ring 2s infinite ease-out;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .hero-title {
+      font-size: var(--fs-h1);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-16);
+    }
+
+    .hero-title-highlight {
+      color: var(--accent-secondary);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      font-weight: var(--weight-body);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-32);
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+      margin-bottom: var(--space-48);
+      flex-wrap: wrap;
+    }
+
+    /* Hero Quick Highlights */
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: var(--space-32);
+      padding-top: var(--space-24);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 32px;
+      background-color: var(--border-color);
+    }
+
+    /* Hero Visual Card */
+    .hero-visual-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-elevation);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .hero-visual-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .card-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px var(--space-16);
+      background-color: #f6f6f6;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .tdot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .tdot-red { background-color: #ef4444; }
+    .tdot-yellow { background-color: #fabc0f; }
+    .tdot-green { background-color: #22c55e; }
+
+    .card-filename {
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: var(--text-secondary);
+    }
+
+    .code-display {
+      padding: var(--space-24);
+      background-color: var(--bg-secondary);
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      overflow-x: auto;
+    }
+
+    .code-keyword { color: #d946ef; font-weight: 600; }
+    .code-var { color: #0284c7; }
+    .code-prop { color: var(--text-primary); font-weight: 500; }
+    .code-str { color: #16a34a; }
+
+    .card-bottom-pill {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      padding: 10px var(--space-16);
+      background-color: #fafafa;
+      border-top: 1px solid var(--border-color);
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    /* -----------------------------------------------------------------------
+       7. ABOUT ME SECTION (NARRATIVE + SEMANTIC ASIDE)
+       ----------------------------------------------------------------------- */
+    .section-about {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr;
+      gap: var(--space-48);
+      align-items: start;
+    }
+
+    .about-heading {
+      font-size: 1.25rem;
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-16);
+      line-height: 1.4;
+    }
+
+    .about-text {
+      margin-bottom: var(--space-16);
+    }
+
+    .about-text strong {
+      color: var(--text-primary);
+      font-weight: var(--weight-heading);
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-16);
+      margin-top: var(--space-32);
+    }
+
+    .feature-item {
+      display: flex;
+      gap: var(--space-16);
+      padding: var(--space-16);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      transition: var(--transition);
+    }
+
+    .feature-item:hover {
+      border-color: #dfdfdf;
+      transform: translateX(4px);
+    }
+
+    .feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      color: var(--accent-secondary);
+    }
+
+    .feature-title {
+      font-size: var(--fs-h4);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    /* Semantic Aside */
+    .about-aside {
+      position: sticky;
+      top: calc(var(--header-height) + 24px);
+    }
+
+    .aside-box {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: var(--space-32);
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .aside-title {
+      font-size: var(--fs-h3);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-24);
+      padding-bottom: var(--space-16);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+      margin-bottom: var(--space-24);
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--fs-small);
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      color: var(--text-secondary);
+    }
+
+    .info-val {
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .info-badge-green {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: var(--weight-heading);
+      color: var(--success-color);
+      background-color: var(--success-soft);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .aside-quote {
+      background-color: var(--bg-secondary);
+      border-left: 3px solid var(--accent-primary);
+      padding: var(--space-16);
+      border-radius: 4px;
+      margin-bottom: var(--space-24);
+    }
+
+    .aside-quote p {
+      font-size: var(--fs-small);
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .aside-quote cite {
+      font-size: 0.75rem;
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      font-style: normal;
+    }
+
+    /* -----------------------------------------------------------------------
+       8. SKILLS SECTION
+       ----------------------------------------------------------------------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-24);
+    }
+
+    .skill-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: var(--space-32);
+      box-shadow: var(--shadow-elevation);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: #dcdcdc;
+    }
+
+    .skill-icon-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+      margin-bottom: var(--space-16);
+    }
+
+    .skill-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-btn);
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent-secondary-soft));
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+
+    .skill-card-title {
+      font-size: var(--fs-h3);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+    }
+
+    .skill-card-desc {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-24);
+      line-height: 1.5;
+    }
+
+    .tech-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+      margin-top: auto;
+    }
+
+    .tech-pill-item {
+      font-size: var(--fs-small);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: var(--radius-btn);
+      transition: var(--transition);
+    }
+
+    .tech-pill-item:hover {
+      background-color: var(--accent-primary);
+      border-color: var(--accent-primary);
+      color: var(--text-primary);
+    }
+
+    /* -----------------------------------------------------------------------
+       9. PROJECTS SECTION (SEMANTIC ARTICLES)
+       ----------------------------------------------------------------------- */
+    .section-projects {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-32);
+    }
+
+    .project-card {
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: var(--space-32);
+      box-shadow: var(--shadow-elevation);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: #dcdcdc;
+    }
+
+    .project-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-16);
+      flex-wrap: wrap;
+      gap: var(--space-8);
+    }
+
+    .project-badge-tag {
+      font-size: 0.75rem;
+      font-weight: var(--weight-heading);
+      color: var(--accent-secondary);
+      background-color: var(--accent-secondary-soft);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .project-year {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    .project-heading {
+      font-size: 1.25rem;
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: var(--space-16);
+    }
+
+    .project-summary {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-24);
+      line-height: 1.6;
+    }
+
+    .project-specs-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      padding: var(--space-16);
+      margin-bottom: var(--space-24);
+    }
+
+    .specs-title {
+      font-size: var(--fs-small);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: var(--space-8);
+    }
+
+    .specs-list {
+      list-style: disc;
+      padding-left: 18px;
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .specs-list li + li {
+      margin-top: 4px;
+    }
+
+    .project-stack-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      margin-bottom: var(--space-24);
+    }
+
+    .stack-chip {
+      font-size: 0.75rem;
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .project-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-16);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fs-body);
+      font-weight: var(--weight-heading);
+      color: var(--accent-secondary);
+      transition: gap 0.2s ease;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+      color: #e06016;
+    }
+
+    .project-status-note {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* -----------------------------------------------------------------------
+       10. CONTACT SECTION (FORM & SOCIAL CHANNELS)
+       ----------------------------------------------------------------------- */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: var(--space-48);
+      align-items: start;
+    }
+
+    .contact-card-info {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: var(--space-48);
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .contact-box-title {
+      font-size: var(--fs-h3);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-16);
+    }
+
+    .contact-box-desc {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-32);
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-24);
+      margin-bottom: var(--space-32);
+    }
+
+    .method-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+    }
+
+    .method-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+
+    .method-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    .method-value {
+      font-size: var(--fs-body);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+    }
+
+    a.method-value:hover {
+      color: var(--accent-secondary);
+    }
+
+    /* Social Links */
+    .social-block {
+      padding-top: var(--space-24);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .social-heading {
+      font-size: var(--fs-small);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-16);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .social-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8);
+    }
+
+    .social-anchor {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-8);
+      padding: 8px var(--space-16);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      font-size: var(--fs-small);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
+
+    .social-anchor:hover {
+      background-color: var(--text-primary);
+      color: #ffffff;
+      border-color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form Panel */
+    .contact-card-form {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-card);
+      padding: var(--space-48);
+      box-shadow: var(--shadow-elevation);
+    }
+
+    .form-group {
+      margin-bottom: var(--space-24);
+    }
+
+    .form-label {
+      display: block;
+      font-size: var(--fs-small);
+      font-weight: var(--weight-medium);
+      color: var(--text-primary);
+      margin-bottom: var(--space-8);
+    }
+
+    .required-star {
+      color: var(--error-color);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px var(--space-16);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-input);
+      font-size: var(--fs-body);
+      color: var(--text-primary);
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      background-color: #ffffff;
+      border-color: var(--accent-primary);
+      outline: none;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .form-input.is-invalid {
+      border-color: var(--error-color);
+      background-color: #fff8f8;
+    }
+
+    .input-error-msg {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--error-color);
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
+    /* Status Alert Banner */
+    .form-feedback-alert {
+      display: none;
+      padding: 12px var(--space-16);
+      border-radius: var(--radius-btn);
+      font-size: var(--fs-small);
+      margin-bottom: var(--space-24);
+      line-height: 1.5;
+    }
+
+    .form-feedback-alert.alert-success {
+      display: block;
+      background-color: var(--success-soft);
+      color: var(--success-color);
+      border: 1px solid #bbf7d0;
+    }
+
+    .form-feedback-alert.alert-error {
+      display: block;
+      background-color: var(--error-soft);
+      color: var(--error-color);
+      border: 1px solid #fecaca;
+    }
+
+    /* -----------------------------------------------------------------------
+       11. FOOTER SEMANTIK
+       ----------------------------------------------------------------------- */
+    .site-footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding-top: var(--space-64);
+    }
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: var(--space-48);
+      padding-bottom: var(--space-48);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: var(--space-16);
+    }
+
+    .footer-bio {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .footer-heading {
+      font-size: var(--fs-h4);
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      margin-bottom: var(--space-24);
+    }
+
+    .footer-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-nav-links a {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    .footer-nav-links a:hover {
+      color: var(--accent-secondary);
+      transform: translateX(3px);
+    }
+
+    .footer-badge-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: var(--weight-heading);
+      color: var(--text-primary);
+      background-color: var(--accent-primary);
+      padding: 6px var(--space-16);
+      border-radius: var(--radius-pill);
+      margin-top: var(--space-16);
+    }
+
+    .footer-bottom-bar {
+      border-top: 1px solid var(--border-color);
+      padding-top: var(--space-24);
+      padding-bottom: var(--space-24);
+      background-color: var(--bg-primary);
+    }
+
+    .bottom-bar-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .copy-text {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    .copy-text strong {
+      color: var(--text-primary);
+    }
+
+    .btn-scroll-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-btn);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-scroll-top:hover {
+      background-color: var(--accent-primary);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* -----------------------------------------------------------------------
+       12. RESPONSIVE BREAKPOINTS (<768px & <992px)
+       ----------------------------------------------------------------------- */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-32);
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .about-aside {
+        position: static;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-columns {
+        grid-template-columns: 1fr;
+        gap: var(--space-32);
+      }
+    }
+
+    /* Mobile Screen Rules (<768px) */
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 64px;
+        --space-64: 48px;
+        --space-48: 32px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .primary-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--bg-secondary);
+        flex-direction: column;
+        align-items: stretch;
+        padding: var(--space-32) var(--space-24);
+        gap: var(--space-24);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                    opacity 0.25s ease, 
+                    visibility 0.35s ease;
+        overflow-y: auto;
+      }
+
+      .primary-nav.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-8);
+      }
+
+      .nav-link {
+        font-size: 1.05rem;
+        padding: 12px var(--space-16);
+      }
+
+      .nav-action-wrap {
+        margin-top: var(--space-16);
+      }
+
+      .nav-action-wrap .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-16);
+      }
+
+      .stat-divider {
+        display: none;
+      }
+
+      .contact-card-info, 
+      .contact-card-form {
+        padding: var(--space-24);
+      }
+
+      .bottom-bar-flex {
+        flex-direction: column;
+        gap: var(--space-16);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================= -->
+  <!-- 1. HEADER & NAVBAR SEMANTIK                                             -->
+  <!-- ======================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#hero" class="logo" aria-label="Beranda Wahyu Saputra">
+        <span class="logo-badge">WS</span>
+        <span class="logo-text">Wahyu Saputra<span class="logo-accent">.</span></span>
+      </a>
+
+      <!-- Tombol Hamburger Mobile (<768px) -->
+      <button 
+        type="button" 
+        class="menu-toggle" 
+        id="menuToggle" 
+        aria-label="Navigasi Menu" 
+        aria-expanded="false" 
+        aria-controls="primaryNav"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Navigasi Menu Utama -->
+      <nav class="primary-nav" id="primaryNav" aria-label="Menu Utama Halaman">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-action-wrap">
+          <a href="#contact" class="btn btn-primary btn-sm">Mulai Diskusi</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- KONTEN UTAMA (MAIN SEMANTIK)                                            -->
+  <!-- ======================================================================= -->
+  <main id="mainContent">
+
+    <!-- ===================================================================== -->
+    <!-- 2. SECTION: HERO (HOME)                                               -->
+    <!-- ===================================================================== -->
+    <section class="section section-hero" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Kolom Informasi Teks -->
+          <div class="hero-text-block">
+            <div class="hero-badge-status">
+              <span class="status-dot"></span>
+              <span>Siswa SMK PPLG</span>
+            </div>
+
+            <h1 class="hero-title">
+              Portfolio <span class="hero-title-highlight">Wahyu Saputra</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              Siswa SMK jurusan <strong>Pengembangan Perangkat Lunak dan Gim (PPLG)</strong>. Berfokus pada pengembangan aplikasi web, logika pemrograman, dan pembuatan basis data.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <span>Lihat Proyek</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>Hubungi Saya</span>
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-box">
+                <span class="stat-number">PPLG</span>
+                <span class="stat-label">Jurusan SMK</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-box">
+                <span class="stat-number">Web &amp; DB</span>
+                <span class="stat-label">Fokus Utama</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-box">
+                <span class="stat-number">Siap PKL</span>
+                <span class="stat-label">Status Magang</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Visual Kode Profil Developer -->
+          <div class="hero-visual-block">
+            <div class="hero-visual-card">
+              <div class="card-topbar">
+                <div class="terminal-dots">
+                  <span class="tdot tdot-red"></span>
+                  <span class="tdot tdot-yellow"></span>
+                  <span class="tdot tdot-green"></span>
+                </div>
+                <span class="card-filename">wahyu-saputra.config.js</span>
+              </div>
+
+              <div class="code-display">
+<pre><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">nama</span>: <span class="code-str">"Wahyu Saputra"</span>,
+  <span class="code-prop">status</span>: <span class="code-str">"Siswa SMK Jurusan PPLG"</span>,
+  <span class="code-prop">positioning</span>: [
+    <span class="code-str">"Pengembangan Aplikasi Web"</span>,
+    <span class="code-str">"Logika Pemrograman"</span>,
+    <span class="code-str">"Pembuatan Basis Data"</span>
+  ],
+  <span class="code-prop">techStack</span>: [<span class="code-str">"HTML5"</span>, <span class="code-str">"CSS3"</span>, <span class="code-str">"JS"</span>, <span class="code-str">"PHP"</span>, <span class="code-str">"MySQL"</span>],
+  <span class="code-prop">ketersediaan</span>: <span class="code-str">"Praktik Kerja Lapangan (PKL)"</span>
+};</code></pre>
+              </div>
+
+              <div class="card-bottom-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                <span>Berorientasi pada Struktur Bersih &amp; Konsistensi Data</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. SECTION: ABOUT ME (DENGAN ASIDE FAKTA CEPAT)                       -->
+    <!-- ===================================================================== -->
+    <section class="section section-about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Profil Siswa</span>
+          <h2 class="section-title">Tentang Saya</h2>
+          <p class="section-desc">Mengenal lebih dekat dedikasi dan perjalanan belajar di jurusan Pengembangan Perangkat Lunak dan Gim (PPLG).</p>
+        </div>
+
+        <div class="about-layout">
+          <!-- Narasi Profil Utama -->
+          <div class="about-narrative">
+            <h3 class="about-heading">Membangun Fondasi Kuat dalam Rekayasa Perangkat Lunak</h3>
+            <p class="about-text">
+              Halo! Saya <strong>Wahyu Saputra</strong>, seorang siswa aktif di Sekolah Menengah Kejuruan (SMK) pada kompetensi keahlian <strong>Pengembangan Perangkat Lunak dan Gim (PPLG)</strong>. Saya memiliki komitmen tinggi untuk memahami siklus pembuatan perangkat lunak, mulai dari penyusunan alur algoritma hingga perancangan basis data yang siap pakai.
+            </p>
+            <p class="about-text">
+              Positioning belajar saya terfokus pada <strong>pengembangan aplikasi web</strong> berbasis standar modern, penguatan <strong>logika pemrograman</strong> yang terstruktur, serta <strong>pembuatan basis data</strong> relasional menggunakan MySQL. Saya percaya kode yang baik adalah kode yang bersih, mudah dipelihara, dan menyelesaikan masalah nyata bagi pengguna.
+            </p>
+            <p class="about-text">
+              Saya memiliki rasa ingin tahu yang besar, teliti saat menguji alur sistem, serta siap mengaplikasikan kemampuan ini secara profesional dalam program <strong>Praktik Kerja Lapangan (PKL) / Magang Industri</strong>.
+            </p>
+
+            <!-- Nilai Kerja / Fitur Pendukung -->
+            <div class="about-features">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div>
+                  <h4 class="feature-title">Web Semantik &amp; Terstruktur</h4>
+                  <p class="feature-desc">Menerapkan arsitektur HTML5 semantik murni, responsive layout, dan CSS bersih demi kemudahan aksesibilitas.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <div>
+                  <h4 class="feature-title">Logika &amp; Integritas Basis Data</h4>
+                  <p class="feature-desc">Mengutamakan normalisasi tabel database, relasi kunci asing yang akurat, serta alur CRUD yang konsisten.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Semantic ASIDE: Fakta Cepat Siswa -->
+          <aside class="about-aside" aria-label="Ringkasan Data Siswa">
+            <div class="aside-box">
+              <h3 class="aside-title">Ringkasan Profil</h3>
+
+              <ul class="info-list">
+                <li class="info-row">
+                  <span class="info-label">Nama</span>
+                  <span class="info-val">Wahyu Saputra</span>
+                </li>
+                <li class="info-row">
+                  <span class="info-label">Pendidikan</span>
+                  <span class="info-val">Siswa SMK Tingkat Menengah</span>
+                </li>
+                <li class="info-row">
+                  <span class="info-label">Konsentrasi</span>
+                  <span class="info-val">PPLG (Rekayasa Perangkat Lunak)</span>
+                </li>
+                <li class="info-row">
+                  <span class="info-label">Fokus Minat</span>
+                  <span class="info-val">Web, Logika, Basis Data</span>
+                </li>
+                <li class="info-row">
+                  <span class="info-label">Ketersediaan</span>
+                  <span class="info-badge-green">Siap Magang / PKL</span>
+                </li>
+              </ul>
+
+              <div class="aside-quote">
+                <p>“Belajar koding melatih ketelitian logika dan ketekunan dalam memecahkan setiap tantangan sistem.”</p>
+                <cite>— Wahyu Saputra</cite>
+              </div>
+
+              <a href="#contact" class="btn btn-secondary btn-full btn-sm">Diskusikan Peluang Magang</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. SECTION: SKILLS (KARTU KEAHLIAN BERLATAR #ffffff)                   -->
+    <!-- ===================================================================== -->
+    <section class="section section-skills" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Kompetensi</span>
+          <h2 class="section-title">Keahlian &amp; Tech Stack</h2>
+          <p class="section-desc">Kombinasi bahasa pemrograman, alat bantu teknis, dan keterampilan analisis logika yang terus saya latih.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Card 1: Languages -->
+          <div class="skill-card">
+            <div class="skill-icon-header">
+              <div class="skill-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3 class="skill-card-title">Languages</h3>
+            </div>
+            <p class="skill-card-desc">Bahasa inti yang digunakan untuk merakit antarmuka web, backend logika, dan manipulasi database.</p>
+            <ul class="tech-pill-list">
+              <li class="tech-pill-item">HTML5 Semantik</li>
+              <li class="tech-pill-item">CSS3 &amp; Flexbox/Grid</li>
+              <li class="tech-pill-item">JavaScript (ES6+)</li>
+              <li class="tech-pill-item">PHP Native &amp; OOP</li>
+              <li class="tech-pill-item">SQL (Structured Query)</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Tools & Database -->
+          <div class="skill-card">
+            <div class="skill-icon-header">
+              <div class="skill-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3 class="skill-card-title">Tools &amp; Database</h3>
+            </div>
+            <p class="skill-card-desc">Lingkungan kerja, manajemen basis data, dan kontrol versi untuk mendukung produktivitas.</p>
+            <ul class="tech-pill-list">
+              <li class="tech-pill-item">MySQL / MariaDB</li>
+              <li class="tech-pill-item">Git &amp; GitHub</li>
+              <li class="tech-pill-item">Visual Studio Code</li>
+              <li class="tech-pill-item">Laragon / XAMPP</li>
+              <li class="tech-pill-item">phpMyAdmin</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Soft Skills & Logic -->
+          <div class="skill-card">
+            <div class="skill-icon-header">
+              <div class="skill-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <h3 class="skill-card-title">Soft Skills &amp; Logika</h3>
+            </div>
+            <p class="skill-card-desc">Kapasitas problem-solving, daya analisis algoritma, serta komunikasi kerja dalam tim rekayasa.</p>
+            <ul class="tech-pill-list">
+              <li class="tech-pill-item">Logika Pemrograman</li>
+              <li class="tech-pill-item">Algoritma Alur Sistem</li>
+              <li class="tech-pill-item">Problem Solving Mandiri</li>
+              <li class="tech-pill-item">Dokumentasi Teknis</li>
+              <li class="tech-pill-item">Kerja Sama Tim</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. SECTION: PROJECTS (SEMANTIC ARTICLES)                              -->
+    <!-- ===================================================================== -->
+    <section class="section section-projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Portofolio Karya</span>
+          <h2 class="section-title">Proyek Pilihan</h2>
+          <p class="section-desc">Implementasi nyata dari konsep pengembangan web, manipulasi data transaksional, dan desain responsif.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Proyek 1: Sistem Kasir Penjualan (POS) -->
+          <article class="project-card" id="project-pos">
+            <div class="project-meta-top">
+              <span class="project-badge-tag">Web Application &amp; Database</span>
+              <span class="project-year">Proyek PPLG</span>
+            </div>
+
+            <h3 class="project-heading">Sistem Kasir Penjualan (POS)</h3>
+            <p class="project-summary">
+              Aplikasi kasir (Point of Sales) terintegrasi untuk pencatatan transaksi toko ritel secara real-time. Memiliki pengelolaan stok otomatis saat transaksi berhasil, penghitungan total belanja beserta diskon kasir, dan laporan riwayat penjualan harian yang siap cetak.
+            </p>
+
+            <div class="project-specs-card">
+              <h4 class="specs-title">Fitur &amp; Arsitektur Kunci:</h4>
+              <ul class="specs-list">
+                <li>Normalisasi skema basis data relasional (Tabel Transaksi, Detail, Barang, Kategori).</li>
+                <li>Operasi CRUD data barang dan kalkulasi kembalian otomatis menggunakan JavaScript.</li>
+                <li>Penyajian struk belanja siap cetak ke format nota printer kasir.</li>
+              </ul>
+            </div>
+
+            <div class="project-stack-wrap">
+              <span class="stack-chip">PHP</span>
+              <span class="stack-chip">MySQL</span>
+              <span class="stack-chip">HTML/CSS</span>
+              <span class="stack-chip">JavaScript</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="#contact" class="project-link" aria-label="Lihat detail Sistem Kasir Penjualan POS">
+                <span>Lihat Studi Kasus</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="project-status-note">Selesai • Siap Dipraktikkan</span>
+            </div>
+          </article>
+
+          <!-- Proyek 2: Landing Page Sekolah Responsif -->
+          <article class="project-card" id="project-school">
+            <div class="project-meta-top">
+              <span class="project-badge-tag">Frontend Website</span>
+              <span class="project-year">Proyek PPLG</span>
+            </div>
+
+            <h3 class="project-heading">Landing Page Sekolah Responsif</h3>
+            <p class="project-summary">
+              Website profil sekolah kejuruan modern yang mengedepankan kecepatan akses dan kemudahan navigasi di seluruh perangkat pengguna. Memuat katalog jurusan keahlian PPLG interaktif, agenda sekolah, dan form kontak dengan validasi langsung di sisi peramban.
+            </p>
+
+            <div class="project-specs-card">
+              <h4 class="specs-title">Fitur &amp; Arsitektur Kunci:</h4>
+              <ul class="specs-list">
+                <li>Struktur semantik ramah SEO dengan skor performa tinggi tanpa framework luar.</li>
+                <li>Tata letak 100% responsif (Desktop, Tablet, Ponsel) dengan CSS Grid &amp; Flexbox.</li>
+                <li>Navigasi interaktif mobile drawer dan validasi formulir instan menggunakan JavaScript.</li>
+              </ul>
+            </div>
+
+            <div class="project-stack-wrap">
+              <span class="stack-chip">HTML5</span>
+              <span class="stack-chip">CSS3</span>
+              <span class="stack-chip">JavaScript</span>
+              <span class="stack-chip">Responsive Web</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="#contact" class="project-link" aria-label="Lihat detail Landing Page Sekolah">
+                <span>Lihat Studi Kasus</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <span class="project-status-note">Selesai • Live Preview</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. SECTION: CONTACT (FORMULIR & SOSIAL MEDIA)                         -->
+    <!-- ===================================================================== -->
+    <section class="section section-contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Komunikasi</span>
+          <h2 class="section-title">Hubungi Saya</h2>
+          <p class="section-desc">Tertarik untuk mendiskusikan peluang Praktik Kerja Lapangan (PKL) atau kolaborasi proyek web? Kirimkan pesan Anda!</p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Kolom Informasi & Media Sosial -->
+          <div class="contact-card-info">
+            <h3 class="contact-box-title">Mari Terhubung</h3>
+            <p class="contact-box-desc">
+              Saya selalu terbuka menyambut diskusi seputar pemrograman, kebutuhan magang siswa SMK PPLG, maupun pengembangan proyek website.
+            </p>
+
+            <div class="contact-methods">
+              <div class="method-row">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <div class="method-label">Email Resmi</div>
+                  <a href="mailto:wahyu.saputra.pplg@gmail.com" class="method-value">wahyu.saputra.pplg@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="method-row">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div class="method-label">WhatsApp / Telepon</div>
+                  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="method-value">+62 812-3456-7890</a>
+                </div>
+              </div>
+
+              <div class="method-row">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div class="method-label">Lokasi</div>
+                  <div class="method-value">Indonesia (Terbuka Onsite &amp; Remote)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daftar Sosial Media -->
+            <div class="social-block">
+              <h4 class="social-heading">Jejaring Sosial</h4>
+              <div class="social-btn-group">
+                <!-- GitHub -->
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-anchor" aria-label="Profil GitHub Wahyu Saputra">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-anchor" aria-label="Profil LinkedIn Wahyu Saputra">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+
+                <!-- Email Link -->
+                <a href="mailto:wahyu.saputra.pplg@gmail.com" class="social-anchor" aria-label="Kirim Email ke Wahyu Saputra">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg>
+                  <span>Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom Formulir Kontak Interaktif -->
+          <div class="contact-card-form">
+            <h3 class="contact-box-title">Kirimkan Pesan</h3>
+            <p class="contact-box-desc">Silakan isi formulir di bawah ini. Pesan Anda akan langsung divalidasi dan ditanggapi.</p>
+
+            <!-- Status Alert Notifikasi Interaktif -->
+            <div id="formFeedbackAlert" class="form-feedback-alert" role="alert" aria-live="polite"></div>
+
+            <form id="contactForm" novalidate>
+              <!-- Input Nama -->
+              <div class="form-group">
+                <label for="inputName" class="form-label">Nama Lengkap <span class="required-star">*</span></label>
+                <input 
+                  type="text" 
+                  id="inputName" 
+                  name="nama" 
+                  class="form-input" 
+                  placeholder="Contoh: Budi Prasetyo" 
+                  autocomplete="name" 
+                  required
+                >
+                <span class="input-error-msg" id="nameErrorMsg"></span>
+              </div>
+
+              <!-- Input Email -->
+              <div class="form-group">
+                <label for="inputEmail" class="form-label">Alamat Email <span class="required-star">*</span></label>
+                <input 
+                  type="email" 
+                  id="inputEmail" 
+                  name="email" 
+                  class="form-input" 
+                  placeholder="nama@perusahaan.com" 
+                  autocomplete="email" 
+                  required
+                >
+                <span class="input-error-msg" id="emailErrorMsg"></span>
+              </div>
+
+              <!-- Input Pesan -->
+              <div class="form-group">
+                <label for="inputMessage" class="form-label">Pesan / Diskusi <span class="required-star">*</span></label>
+                <textarea 
+                  id="inputMessage" 
+                  name="pesan" 
+                  rows="4" 
+                  class="form-input" 
+                  placeholder="Tuliskan pesan Anda terkait peluang magang, proyek, atau pertanyaan..." 
+                  required
+                ></textarea>
+                <span class="input-error-msg" id="messageErrorMsg"></span>
+              </div>
+
+              <!-- Tombol Submit CTA Utama Berlatar #fabc0f -->
+              <button type="submit" id="btnSubmitForm" class="btn btn-primary btn-full">
+                <span id="btnSubmitText">Kirim Pesan Sekarang</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================= -->
+  <!-- 7. FOOTER SEMANTIK                                                      -->
+  <!-- ======================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-columns">
+      <!-- Kolom Brand -->
+      <div class="footer-brand">
+        <a href="#hero" class="logo" aria-label="Kembali ke atas">
+          <span class="logo-badge">WS</span>
+          <span class="logo-text">Wahyu Saputra<span class="logo-accent">.</span></span>
+        </a>
+        <p class="footer-bio">
+          Siswa SMK Jurusan Pengembangan Perangkat Lunak dan Gim (PPLG). Berdedikasi merancang sistem web yang rapi, efisien, dan berdampak nyata.
+        </p>
+      </div>
+
+      <!-- Kolom Navigasi Cepat -->
+      <div class="footer-nav-col">
+        <h4 class="footer-heading">Navigasi Halaman</h4>
+        <ul class="footer-nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills &amp; Stack</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Kolom Status Siswa -->
+      <div class="footer-status-col">
+        <h4 class="footer-heading">Kesiapan Kerja</h4>
+        <p class="footer-bio">
+          Terbuka untuk program Praktik Kerja Lapangan (PKL) / Magang Industri periode aktif sekolah.
+        </p>
+        <span class="footer-badge-pill">Tersedia untuk Magang / PKL</span>
+      </div>
+    </div>
+
+    <!-- Baris Hak Cipta Bawah -->
+    <div class="footer-bottom-bar">
+      <div class="container bottom-bar-flex">
+        <p class="copy-text">
+          &copy; <span id="copyrightYear">2026</span> <strong>Wahyu Saputra</strong>. Seluruh hak cipta dilindungi.
+        </p>
+        <button type="button" class="btn-scroll-top" id="btnScrollTop" aria-label="Kembali ke atas halaman">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- INTERNAL JAVASCRIPT (VANILLA JS): INTERAKSI LENGKAP                     -->
+  <!-- ======================================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      'use strict';
+
+      // ---------------------------------------------------------------------
+      // 1. ELEMEN SELEKTOR UTAMA
+      // ---------------------------------------------------------------------
+      const siteHeader = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const primaryNav = document.getElementById('primaryNav');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section[id]');
+      const btnScrollTop = document.getElementById('btnScrollTop');
+      const copyrightYear = document.getElementById('copyrightYear');
+
+      // Form Kontak
+      const contactForm = document.getElementById('contactForm');
+      const formFeedbackAlert = document.getElementById('formFeedbackAlert');
+      const inputName = document.getElementById('inputName');
+      const inputEmail = document.getElementById('inputEmail');
+      const inputMessage = document.getElementById('inputMessage');
+      const nameErrorMsg = document.getElementById('nameErrorMsg');
+      const emailErrorMsg = document.getElementById('emailErrorMsg');
+      const messageErrorMsg = document.getElementById('messageErrorMsg');
+      const btnSubmitForm = document.getElementById('btnSubmitForm');
+      const btnSubmitText = document.getElementById('btnSubmitText');
+
+      // ---------------------------------------------------------------------
+      // 2. PEMBARUAN TAHUN HAK CIPTA DINAMIS
+      // ---------------------------------------------------------------------
+      if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+      }
+
+      // ---------------------------------------------------------------------
+      // 3. HAMBURGER MENU TOGGLE UNTUK MOBILE (<768px)
+      // ---------------------------------------------------------------------
+      const toggleMobileNav = () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        const nextState = !isExpanded;
+
+        menuToggle.setAttribute('aria-expanded', String(nextState));
+        primaryNav.classList.toggle('is-open', nextState);
+
+        // Mencegah scroll pada body saat navigasi mobile aktif
+        if (nextState) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      };
+
+      const closeMobileNav = () => {
+        if (menuToggle && menuToggle.getAttribute('aria-expanded') === 'true') {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          primaryNav.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      };
+
+      if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMobileNav);
+      }
+
+      // Tutup menu jika tombol Escape ditekan
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMobileNav();
+        }
+      });
+
+      // ---------------------------------------------------------------------
+      // 4. SMOOTH SCROLLING DENGAN OFFSET HEADER & ACTIVE LINK SPY
+      // ---------------------------------------------------------------------
+      const allAnchors = document.querySelectorAll('a[href^="#"]');
+      allAnchors.forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+          const targetId = anchor.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            const targetElem = document.querySelector(targetId);
+            if (targetElem) {
+              e.preventDefault();
+              closeMobileNav();
+
+              const headerOffset = siteHeader ? siteHeader.offsetHeight + 8 : 72;
+              const elementPosition = targetElem.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+
+              // Fokus aksesibilitas
+              targetElem.setAttribute('tabindex', '-1');
+              targetElem.focus({ preventScroll: true });
+            }
+          }
+        });
+      });
+
+      // Tombol Scroll ke Atas
+      if (btnScrollTop) {
+        btnScrollTop.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Scroll Spy: Header Shadow & Nav Link Aktif
+      const handleScrollSpy = () => {
+        const scrollY = window.pageYOffset;
+
+        // Shadow pada header saat di-scroll
+        if (siteHeader) {
+          if (scrollY > 20) {
+            siteHeader.classList.add('scrolled');
+          } else {
+            siteHeader.classList.remove('scrolled');
+          }
+        }
+
+        // Deteksi section aktif
+        const headerOffset = siteHeader ? siteHeader.offsetHeight + 80 : 120;
+        sections.forEach((section) => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - headerOffset;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            navLinks.forEach((link) => {
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      };
+
+      window.addEventListener('scroll', handleScrollSpy, { passive: true });
+
+      // ---------------------------------------------------------------------
+      // 5. VALIDASI FORMULIR KONTAK & NOTIFIKASI / ALERT
+      // ---------------------------------------------------------------------
+      const validateEmailPattern = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email.trim());
+      };
+
+      const setInputError = (inputEl, errorEl, msg) => {
+        inputEl.classList.add('is-invalid');
+        if (errorEl) {
+          errorEl.textContent = msg;
+        }
+      };
+
+      const clearInputError = (inputEl, errorEl) => {
+        inputEl.classList.remove('is-invalid');
+        if (errorEl) {
+          errorEl.textContent = '';
+        }
+      };
+
+      // Reset pesan error saat pengguna mulai mengetik kembali
+      if (inputName) {
+        inputName.addEventListener('input', () => clearInputError(inputName, nameErrorMsg));
+      }
+      if (inputEmail) {
+        inputEmail.addEventListener('input', () => clearInputError(inputEmail, emailErrorMsg));
+      }
+      if (inputMessage) {
+        inputMessage.addEventListener('input', () => clearInputError(inputMessage, messageErrorMsg));
+      }
+
+      // Handle Submit Form
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Reset status alert terdahulu
+          formFeedbackAlert.className = 'form-feedback-alert';
+          formFeedbackAlert.style.display = 'none';
+          formFeedbackAlert.textContent = '';
+
+          let isValid = true;
+
+          // 1. Validasi Nama
+          const valName = inputName ? inputName.value.trim() : '';
+          if (!valName) {
+            setInputError(inputName, nameErrorMsg, 'Nama lengkap wajib diisi.');
+            isValid = false;
+          } else if (valName.length < 3) {
+            setInputError(inputName, nameErrorMsg, 'Nama minimal harus terdiri dari 3 karakter.');
+            isValid = false;
+          } else {
+            clearInputError(inputName, nameErrorMsg);
+          }
+
+          // 2. Validasi Email
+          const valEmail = inputEmail ? inputEmail.value.trim() : '';
+          if (!valEmail) {
+            setInputError(inputEmail, emailErrorMsg, 'Alamat email wajib diisi.');
+            isValid = false;
+          } else if (!validateEmailPattern(valEmail)) {
+            setInputError(inputEmail, emailErrorMsg, 'Format email tidak valid (contoh: nama@perusahaan.com).');
+            isValid = false;
+          } else {
+            clearInputError(inputEmail, emailErrorMsg);
+          }
+
+          // 3. Validasi Pesan
+          const valMessage = inputMessage ? inputMessage.value.trim() : '';
+          if (!valMessage) {
+            setInputError(inputMessage, messageErrorMsg, 'Pesan tidak boleh kosong.');
+            isValid = false;
+          } else if (valMessage.length < 10) {
+            setInputError(inputMessage, messageErrorMsg, 'Pesan terlalu singkat (minimal 10 karakter).');
+            isValid = false;
+          } else {
+            clearInputError(inputMessage, messageErrorMsg);
+          }
+
+          // Jika ada field tidak valid
+          if (!isValid) {
+            formFeedbackAlert.className = 'form-feedback-alert alert-error';
+            formFeedbackAlert.textContent = 'Mohon periksa kolom yang ditandai merah sebelum mengirim pesan.';
+            formFeedbackAlert.style.display = 'block';
+
+            // Fokus ke input error pertama
+            const firstInvalid = contactForm.querySelector('.is-invalid');
+            if (firstInvalid) {
+              firstInvalid.focus();
+            }
+            return;
+          }
+
+          // Indikator Loading Pengiriman
+          btnSubmitForm.disabled = true;
+          const originalText = btnSubmitText.textContent;
+          btnSubmitText.textContent = 'Mengirim Pesan...';
+
+          // Simulasi Pengiriman Berhasil
+          setTimeout(() => {
+            btnSubmitForm.disabled = false;
+            btnSubmitText.textContent = originalText;
+
+            // Tampilkan Notifikasi Alert Sukses
+            formFeedbackAlert.className = 'form-feedback-alert alert-success';
+            formFeedbackAlert.innerHTML = `
+              <strong>Pesan Berhasil Terkirim!</strong> Terima kasih, <strong>${escapeHtml(valName)}</strong>. Wahyu Saputra akan segera merespons ke alamat email Anda (<em>${escapeHtml(valEmail)}</em>).
+            `;
+            formFeedbackAlert.style.display = 'block';
+
+            // Alert sederhana pop-up ramah
+            alert(`Terima kasih, ${valName}! Pesan Anda telah terkirim kepada Wahyu Saputra. Kami akan segera menghubungi Anda melalui ${valEmail}.`);
+
+            // Reset Formulir
+            contactForm.reset();
+          }, 800);
+        });
+      }
+
+      // Sanitasi Teks (XSS Prevention)
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, (m) => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        }[m]));
+      }
+    });
+  </script>
+</body>
+</html>
